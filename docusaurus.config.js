@@ -56,7 +56,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/yeahooool',
+            'https://github.com/yeahooool/hhhhblog/issues',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -109,7 +109,7 @@ const config = {
           },
           {to: '/blog', label: 'MyBlog', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/yeahooool',
             label: 'GitHub',
             position: 'right',
           },
@@ -153,7 +153,7 @@ const config = {
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                href: 'https://github.com/yeahooool',
               },
             ],
           },
