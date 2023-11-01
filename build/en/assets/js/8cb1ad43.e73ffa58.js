@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkhf_log=self.webpackChunkhf_log||[]).push([[8429],{160:e=>{e.exports=JSON.parse('{"title":"C++","description":"5 minutes to learn the most important Docusaurus concepts.","slug":"/category/c","permalink":"/en/docs/category/c","navigation":{"next":{"title":"c++quickly","permalink":"/en/docs/C++/c++quickly"}}}')}}]);
