@@ -8,9 +8,9 @@ const katex = require("rehype-katex");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'hh惚惚',
+  title: 'KESSOKU',
   tagline: '白骨终将化为沙土, 却又生生不息',
-  favicon: 'img/20231031162116.jpg',
+  favicon: 'img/1314539.png',
 
   // Set the production url of your site here
   url: 'https://hhbu-bu-s-blog.onrender.com',
@@ -88,10 +88,10 @@ const config = {
       },
       navbar: {
         hideOnScroll: true,
-        title: 'hh惚惚',
+        title: 'Bocchi',
         logo: {
           alt: 'My Site Logo',
-          src: 'img/20231031162116.jpg',
+          src: 'img/1314539.png',
         },
         items: [
           {

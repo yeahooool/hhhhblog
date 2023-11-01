@@ -4,11 +4,11 @@
  */
 
 .heroBanner {
-  padding: 10rem 0;
+  padding: 16rem 0;
   text-align: center;
   position: relative;
   overflow: hidden;
-  background-image: url('/static/img/l8mpz2_5314x3507.png');
+  background-image: url('/static/img/1290521.jpg');
   background-size: cover; /* 确保背景图片覆盖整个横幅区域 */
   background-position: top; /* 背景图片位置 */
 }
