@@ -9,7 +9,7 @@ const katex = require("rehype-katex");
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'KESSOKU',
-  tagline: '白骨终将化为沙土, 却又生生不息',
+  tagline: '只有追求自己想要的，才能获得真正的自由',
   favicon: 'img/1314539.png',
 
   // Set the production url of your site here
