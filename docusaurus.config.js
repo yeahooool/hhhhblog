@@ -9,8 +9,8 @@ const katex = require("rehype-katex");
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'KESSOKU',
-  tagline: '只有追求自己想要的，才能获得真正的自由',
-  favicon: 'img/1314539.png',
+  tagline: '阴郁的话就去玩摇滚！',
+  favicon: 'img/1314539-removebg-min.png',
 
   // Set the production url of your site here
   url: 'https://hhbu-bu-s-blog.onrender.com',
@@ -91,7 +91,7 @@ const config = {
         title: 'Bocchi',
         logo: {
           alt: 'My Site Logo',
-          src: 'img/1314539.png',
+          src: 'img/1314539-removebg-min.png',
         },
         items: [
           {
