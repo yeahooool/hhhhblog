@@ -1,10 +1,8 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
-
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
-const math = require("remark-math");
-const katex = require("rehype-katex");
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
+import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -38,12 +36,12 @@ const config = {
 
   presets: [
     [
-      'classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
+      'classic',
       ({
         docs: {
-          remarkPlugins: [math],
-          rehypePlugins: [katex],
+          remarkPlugins: [remarkMath],
+          rehypePlugins: [rehypeKatex],
           // routeBasePath: "/", // 把文档放在网站根部
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
@@ -52,7 +50,12 @@ const config = {
             'https://github.com/yeahooool',
         },
         blog: {
+          blogTitle: 'hf blog!',
+          blogSidebarCount: 'ALL',
+          postsPerPage: 10,
           showReadingTime: true,
+          remarkPlugins: [remarkMath],
+          rehypePlugins: [rehypeKatex],
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
@@ -67,17 +70,20 @@ const config = {
   plugins: [
     [
       '@docusaurus/plugin-content-docs',
+      /** @type {import('@docusaurus/preset-classic').Options} */
       {
-        id: 'tutorial2',
-        path: 'tutorial2',
+        id: 'docs2',
+        path: 'docs2',
         routeBasePath: '/',
         sidebarPath: require.resolve('./sidebars2.js'),
+        remarkPlugins: [remarkMath],
+        rehypePlugins: [rehypeKatex],
       },
     ],
   ],
 
   themeConfig:
-    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+  /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
@@ -102,10 +108,10 @@ const config = {
           },
           {
             type: 'doc',
-            docId: 'tutorial2',
-            docsPluginId: 'tutorial2',
+            docId: 'docs2',
+            docsPluginId: 'docs2',
             position: 'left',
-            label: '官方教程',
+            label: '暂时不知道写什么',
           },
           {to: '/blog', label: 'MyBlog', position: 'left'},
           {
@@ -138,10 +144,6 @@ const config = {
                 label: 'Discord',
                 href: 'https://discordapp.com/invite/docusaurus',
               },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
-              },
             ],
           },
           {
@@ -161,40 +163,40 @@ const config = {
         copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
       },
       prism: {
-        theme: lightCodeTheme,
-        darkTheme: darkCodeTheme,
+        theme: prismThemes.github,
+        darkTheme: prismThemes.dracula,
       },
       mermaid: {
         theme: {light: 'default', dark: 'dark'},
       },
     }),
     stylesheets: [
-    {
-      href: "https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css",
-      type: "text/css",
-      integrity:
-        "sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM",
-      crossorigin: "anonymous",
-    },
-  ],
+      {
+        href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
+        type: 'text/css',
+        integrity:
+          'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
+        crossorigin: 'anonymous',
+      },
+    ],
   markdown: {
     mermaid: true,
   },
   themes: [
     // ... Your other themes.
-    [
-      require.resolve("@easyops-cn/docusaurus-search-local"),
-      /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
-      ({
-        // ... Your options.
-        // `hashed` is recommended as long-term-cache of index file is possible.
-        hashed: true,
-        language: ["en", "zh"],
-        blogRouteBasePath: "/",
-      }),
-    ],
+    // [
+    //   require.resolve("@easyops-cn/docusaurus-search-local"),
+    //   /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
+    //   ({
+    //     // ... Your options.
+    //     // `hashed` is recommended as long-term-cache of index file is possible.
+    //     hashed: true,
+    //     language: ["en", "zh"],
+    //     blogRouteBasePath: "/",
+    //   }),
+    // ],
     "@docusaurus/theme-mermaid",
   ],
 };
 
-module.exports = config;
+export default config;
