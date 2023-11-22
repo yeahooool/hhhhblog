@@ -1,5 +1,5 @@
 ---
-slug: VASP-6.4.x compile
+slug: VASP-6.4.x-compile
 title: CentOS-7 编译 VASP-6.4.x
 authors: Palia
 tags: [vasp, compile]
