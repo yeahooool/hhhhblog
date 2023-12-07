@@ -229,7 +229,7 @@ $$
 <details>
 <summary>Example</summary>
 
-```python 
+```python
 >>> import torch
 >>> x = torch.ones(5, 3)
 tensor([[1., 1., 1.],
@@ -249,15 +249,15 @@ tensor([[ 2.,  3.,  4.],
 
 dim=0, index=[0, 2, 4, 2], x.shape[0] = 5
 
-首先找index中值为0的索引，找`index[j] = 0`, `j = 0`, 找到t中第0行，将其加到x的第0行上，即`x[0] = x[0] + t[0] = [1, 1, 1] + [1, 2, 3] = [2, 3, 4]`
+首先找 index 中值为 0 的索引，找`index[j] = 0`, `j = 0`, 找到 t 中第 0 行，将其加到 x 的第 0 行上，即`x[0] = x[0] + t[0] = [1, 1, 1] + [1, 2, 3] = [2, 3, 4]`
 
-然后找index中值为1的索引，找`index[j] = 1`, 找不到对应的索引`j`，跳过，`x[1]`保持不变
+然后找 index 中值为 1 的索引，找`index[j] = 1`, 找不到对应的索引`j`，跳过，`x[1]`保持不变
 
-然后找index中值为2的索引，找`index[j] = 2`, `j = 1, 3`, 找到t中第1, 3行，将其加到x的第1, 3行上，即`x[2] = x[2] + t[1] + t[3] = [1, 1, 1] + [4, 5, 6] + [10, 11, 12] = [15, 17, 19]`
+然后找 index 中值为 2 的索引，找`index[j] = 2`, `j = 1, 3`, 找到 t 中第 1, 3 行，将其加到 x 的第 1, 3 行上，即`x[2] = x[2] + t[1] + t[3] = [1, 1, 1] + [4, 5, 6] + [10, 11, 12] = [15, 17, 19]`
 
-然后找index中值为3的索引，找不到对应的索引`j`，跳过，`x[3]`保持不变
+然后找 index 中值为 3 的索引，找不到对应的索引`j`，跳过，`x[3]`保持不变
 
-然后找index中值为4的索引，找`index[j] = 4`, `j = 2`, 找到t中第2行，将其加到x的第2行上，即`x[4] = x[4] + t[2] = [1, 1, 1] + [7, 8, 9] = [8, 9, 10]`
+然后找 index 中值为 4 的索引，找`index[j] = 4`, `j = 2`, 找到 t 中第 2 行，将其加到 x 的第 2 行上，即`x[4] = x[4] + t[2] = [1, 1, 1] + [7, 8, 9] = [8, 9, 10]`
 
 </details>
 
@@ -268,18 +268,22 @@ dim=0, index=[0, 2, 4, 2], x.shape[0] = 5
 按照指定的维度，将 tensor 拆分成一个元组。
 
 > **Parameters**
+>
 > - dim (int) – 指定的维度
 >
 > **Returns**
+>
 > - 返回一个元组
 >
 > **Example**
+>
 > ```python
 > >>> x = torch.tensor([[1, 2, 3],
 >                       [4, 5, 6],
 >                       [7, 8, 9]])
 > >>> x.unbind()
 > (tensor([1, 2, 3]), tensor([4, 5, 6]), tensor([7, 8, 9]))
+> ```
 
 ## 7. `.nonzero(as_tuple=False) → LongTensor`
 
@@ -290,15 +294,104 @@ dim=0, index=[0, 2, 4, 2], x.shape[0] = 5
 `.nonzero(as_tuple=True)` 等价于 `.nonzero().unbind(1)`
 
 > **Parameters**
+>
 > - as_tuple (bool) – 如果为 True，返回一个元组，否则返回一个 `2D tensor`
 >
 > **Returns**
+>
 > - 返回一个 `2D tensor` 或者一个元组
 >
 > **Example**
+>
 > ```python
 > >>> torch.nonzero(torch.tensor([1, 1, 1, 0, 1]))
 > tensor([[ 0],
 >         [ 1],
 >         [ 2],
 >         [ 4]])
+> ```
+
+## 8. `.scatter_(dim, index, src) → Tensor`
+
+[官方文档](https://pytorch.org/docs/stable/generated/torch.Tensor.scatter_.html#torch.Tensor.scatter_)
+
+在指定的 dim 维度上，按照 index 指定的位置，将 src 的值填充到原 tensor 上。
+
+对一个 3-D tensor 来说，`self`值的更新方式为：
+
+```python
+self[index[i][j][k]][j][k] = src[i][j][k]  # if dim == 0
+self[i][index[i][j][k]][k] = src[i][j][k]  # if dim == 1
+self[i][j][index[i][j][k]] = src[i][j][k]  # if dim == 2
+```
+
+> **Parameters**
+> - dim (int) – 指定的维度
+> - index (LongTensor) – 指定的位置
+> - src (Tensor) – 要加的 tensor
+>
+> **Returns**
+> - 返回加完后的 tensor
+>
+> **Example**
+>
+> ```python
+> >>> x = torch.rand(2, 5)
+> >>> x
+> tensor([[0.7404, 0.0427, 0.6480, 0.3806, 0.8328],
+>        [0.7953, 0.2009, 0.9154, 0.6782, 0.9620]])
+> >>> torch.zeros(3, 5).scatter_(0, torch.tensor([[0, 1, 2, 0, 0], [2, 0, 0, 1, 2]]), x)
+> tensor([[0.7404, 0.2009, 0.9154, 0.3806, 0.8328],
+>         [0.0000, 0.0427, 0.0000, 0.6782, 0.0000],
+>         [0.7953, 0.0000, 0.6480, 0.0000, 0.9620]])
+> ```
+
+上面例子中：
+
+index[0][0]=0, self[index[0][0]][0]=self[0][0]=x[0][0]=0.7404
+index[0][1]=1, self[index[0][1]][1]=self[1][1]=x[0][1]=0.0427
+index[0][2]=2, self[index[0][2]][2]=self[2][2]=x[0][2]=0.6480
+...
+
+## 9. `.scatter_add_(dim, index, src) → Tensor`
+
+[官方文档](https://pytorch.org/docs/stable/generated/torch.Tensor.scatter_add_.html#torch.Tensor.scatter_add_)
+
+在指定的 dim 维度上，按照 index 指定的位置，将 src 的值加到原 tensor 上。
+
+对一个 3-D tensor 来说，`self`值的更新方式为：
+
+```python
+self[index[i][j][k]][j][k] += src[i][j][k]  # if dim == 0
+self[i][index[i][j][k]][k] += src[i][j][k]  # if dim == 1
+self[i][j][index[i][j][k]] += src[i][j][k]  # if dim == 2
+```
+
+> **Parameters**
+> - dim (int) – 指定的维度
+> - index (LongTensor) – 指定的位置
+> - src (Tensor) – 要加的 tensor
+>
+> **Returns**
+> - 返回加完后的 tensor
+> **Example**
+> ```python
+> >>> x = torch.rand(2, 5)
+> >>> x
+> tensor([[0.7404, 0.0427, 0.6480, 0.3806, 0.8328],
+>        [0.7953, 0.2009, 0.9154, 0.6782, 0.9620]])
+> >>> torch.ones(3, 5).scatter_add_(0, torch.tensor([[0, 1, 2, 0, 0], [2, 0, 0, 1, 2]]), x)
+> tensor([[1.7404, 1.2009, 1.9154, 1.3806, 1.8328],
+>         [1.0000, 1.0427, 1.0000, 1.6782, 1.0000],
+>         [1.7953, 1.0000, 1.6480, 1.0000, 1.9620]])
+> ```
+
+上面例子中：
+
+index[0][0]=0, self[index[0][0]][0]=self[0][0]=self.[0][0] + x[0][0]= 1 + 0.7404 = 1.7404
+index[0][1]=1, self[index[0][1]][1]=self[1][1]=self.[1][1] + x[0][1]= 1 + 0.0427 = 1.0427
+index[0][2]=2, self[index[0][2]][2]=self[2][2]=self.[2][2] + x[0][2]= 1 + 0.6480 = 1.6480
+
+
+
+
