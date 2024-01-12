@@ -232,15 +232,22 @@ LINKFLAGS += -L$(PYTHON_LIB_PATH) -lpython3.11 -static-libstdc++ -static-libgcc
 
 其中，使用静态链接`-static-libstdc++ -static-libgcc`是为了解决链接器不支持的GNU属性类型的问题.
 
-`LINK_COSTUM_OP_CPU`和`LINK_COSTUM_OP_GPU`是为了在编译时选择链接cpu版本的库文件还是gpu版本的库文件，默认值分别为1和0。可以在运行`make`时设置这些变量的值，例如：
-
-```bash
-make mpi -j4 LINK_COSTUM_OP_GPU=1
-```
-
 如：
 
 ```bash
 /opt/rh/devtoolset-8/root/usr/libexec/gcc/x86_64-redhat-linux/8/ld: warning: /data/home/hfhuang/software/anaconda3/envs/pytorch2/lib/libstdc++.so: unsupported GNU_PROPERTY_TYPE (5) type: 0xc0010001
 ...
 ```
+
+`OP_LIB_PATH`是动态库文件所在的路径，这里通过在执行编译前`export`设置环境变量：
+
+```bash
+export OP_LIB_PATH=/path/to/build/lib/
+```
+
+`LINK_COSTUM_OP_CPU`和`LINK_COSTUM_OP_GPU`是为了在编译时选择链接cpu版本的库文件还是gpu版本的库文件，默认值分别为1和0。可以在运行`make`时设置这些变量的值，例如：
+
+```bash
+make mpi -j4 LINK_COSTUM_OP_GPU=1
+```
+

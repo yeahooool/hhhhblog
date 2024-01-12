@@ -4,28 +4,29 @@
 
 <!-- TOC -->
 
-- [初始化](#%E5%88%9D%E5%A7%8B%E5%8C%96)
-- [添加文件](#%E6%B7%BB%E5%8A%A0%E6%96%87%E4%BB%B6)
-- [状态追踪](#%E7%8A%B6%E6%80%81%E8%BF%BD%E8%B8%AA)
-- [版本回退](#%E7%89%88%E6%9C%AC%E5%9B%9E%E9%80%80)
-- [撤销修改](#%E6%92%A4%E9%94%80%E4%BF%AE%E6%94%B9)
-- [关联远程仓库](#%E5%85%B3%E8%81%94%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93)
-  - [添加 ssh key 到 GitHub](#%E6%B7%BB%E5%8A%A0-ssh-key-%E5%88%B0-github)
-  - [添加远程库（本地仓库上传到 GitHub）](#%E6%B7%BB%E5%8A%A0%E8%BF%9C%E7%A8%8B%E5%BA%93%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%E4%B8%8A%E4%BC%A0%E5%88%B0-github)
-  - [删除远程库](#%E5%88%A0%E9%99%A4%E8%BF%9C%E7%A8%8B%E5%BA%93)
-  - [从远程库克隆（现有远程库，克隆到本地）](#%E4%BB%8E%E8%BF%9C%E7%A8%8B%E5%BA%93%E5%85%8B%E9%9A%86%E7%8E%B0%E6%9C%89%E8%BF%9C%E7%A8%8B%E5%BA%93%E5%85%8B%E9%9A%86%E5%88%B0%E6%9C%AC%E5%9C%B0)
-- [分支管理](#%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86)
-  - [创建与合并分支](#%E5%88%9B%E5%BB%BA%E4%B8%8E%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF)
-  - [解决冲突](#%E8%A7%A3%E5%86%B3%E5%86%B2%E7%AA%81)
-  - [Bug 分支](#bug-%E5%88%86%E6%94%AF)
-- [多人协作](#%E5%A4%9A%E4%BA%BA%E5%8D%8F%E4%BD%9C)
-  - [推送分支](#%E6%8E%A8%E9%80%81%E5%88%86%E6%94%AF)
-  - [抓取分支](#%E6%8A%93%E5%8F%96%E5%88%86%E6%94%AF)
-- [标签管理](#%E6%A0%87%E7%AD%BE%E7%AE%A1%E7%90%86)
-  - [创建标签](#%E5%88%9B%E5%BB%BA%E6%A0%87%E7%AD%BE)
-  - [操作标签](#%E6%93%8D%E4%BD%9C%E6%A0%87%E7%AD%BE)
-- [Git fork](#git-fork)
-  - [fork 操作](#fork-%E6%93%8D%E4%BD%9C)
+- [git 教程](#git-%E6%95%99%E7%A8%8B)
+    - [初始化](#%E5%88%9D%E5%A7%8B%E5%8C%96)
+    - [添加文件](#%E6%B7%BB%E5%8A%A0%E6%96%87%E4%BB%B6)
+    - [状态追踪](#%E7%8A%B6%E6%80%81%E8%BF%BD%E8%B8%AA)
+    - [版本回退](#%E7%89%88%E6%9C%AC%E5%9B%9E%E9%80%80)
+    - [撤销修改](#%E6%92%A4%E9%94%80%E4%BF%AE%E6%94%B9)
+    - [关联远程仓库](#%E5%85%B3%E8%81%94%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93)
+        - [添加 ssh key 到 GitHub](#%E6%B7%BB%E5%8A%A0-ssh-key-%E5%88%B0-github)
+        - [添加远程库（本地仓库上传到 GitHub）](#%E6%B7%BB%E5%8A%A0%E8%BF%9C%E7%A8%8B%E5%BA%93%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%E4%B8%8A%E4%BC%A0%E5%88%B0-github)
+        - [删除远程库](#%E5%88%A0%E9%99%A4%E8%BF%9C%E7%A8%8B%E5%BA%93)
+        - [从远程库克隆（现有远程库，克隆到本地）](#%E4%BB%8E%E8%BF%9C%E7%A8%8B%E5%BA%93%E5%85%8B%E9%9A%86%E7%8E%B0%E6%9C%89%E8%BF%9C%E7%A8%8B%E5%BA%93%E5%85%8B%E9%9A%86%E5%88%B0%E6%9C%AC%E5%9C%B0)
+    - [分支管理](#%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86)
+        - [创建与合并分支](#%E5%88%9B%E5%BB%BA%E4%B8%8E%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF)
+        - [解决冲突](#%E8%A7%A3%E5%86%B3%E5%86%B2%E7%AA%81)
+        - [Bug 分支](#bug-%E5%88%86%E6%94%AF)
+    - [多人协作](#%E5%A4%9A%E4%BA%BA%E5%8D%8F%E4%BD%9C)
+        - [推送分支](#%E6%8E%A8%E9%80%81%E5%88%86%E6%94%AF)
+        - [抓取分支](#%E6%8A%93%E5%8F%96%E5%88%86%E6%94%AF)
+    - [标签管理](#%E6%A0%87%E7%AD%BE%E7%AE%A1%E7%90%86)
+        - [创建标签](#%E5%88%9B%E5%BB%BA%E6%A0%87%E7%AD%BE)
+        - [操作标签](#%E6%93%8D%E4%BD%9C%E6%A0%87%E7%AD%BE)
+    - [Git fork](#git-fork)
+        - [fork 操作](#fork-%E6%93%8D%E4%BD%9C)
 
 <!-- /TOC -->
 
@@ -342,6 +343,14 @@ $ git checkout dev
 Switched to branch 'dev'
 ```
 
+:::info
+如果本地新建了一个分支 dev_feature，但是在远程没有创建：
+
+```shell
+git push --set-upstream origin dev_feature
+```
+:::
+
 `git branch`命令查看当前分支：
 
 ```shell
@@ -360,7 +369,7 @@ On branch dev
 nothing to commit, working tree clean
 ```
 
-2. 在`dev`分支上做修改，然后提交：
+1. 在`dev`分支上做修改，然后提交：
 
 ```shell
 $ git add .
@@ -906,3 +915,31 @@ $ git push origin master
 [Git 冲突](https://blog.csdn.net/DDD4V/article/details/118896307)
 [基于 fork 的 git 常规操作](https://www.imyangyong.com/blog/2019/06/git/%E5%9F%BA%E4%BA%8Efork%E7%9A%84git%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/)
 [Git fork 项目后如何同步原项目的更新](https://www.cnblogs.com/kevingrace/p/5690241.html)
+
+## 统计 git 代码行数
+
+### 查看工程里每个人的代码贡献量
+
+```bash
+git log --format='%aN' | sort -u | while read name; do echo -en "$name\t"; git log --author="$name" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }' -; done
+```
+
+### 统计个人时间段内的某个分支的代码贡献量
+
+```bash
+git log torchscript_v2 --no-merges --since=2023-04-12 --until=2023-12-19 --author="yeahoool" --pretty=tformat: --numstat | awk '{ add += $1 ; subs += $2 ; loc += $1 - $2 } END { printf "added lines: %s removed lines : %s total lines: %s\n",add,subs,loc }'
+```
+
+### 统计个人时间段内的某个分支的代码提交次数
+
+```bash
+git rev-list --count --since=2023-04-12 --until=2023-12-19 --author="yeahoool" torchscript_v2
+```
+
+### 统计特定类型的代码提交
+
+在`git log`命令中使用`--`参数来指定要考虑的文件类型
+
+```bash
+git log torchscript_v2 --no-merges --since=2023-04-12 --until=2023-12-19 --author="yeahoool" --pretty=tformat: --numstat -- '*.py' '*.cpp' '*.f90' | awk '{ add += $1 ; subs += $2 ; loc += $1 - $2 } END { printf "added lines: %s removed lines : %s total lines: %s\n",add,subs,loc }'
+```

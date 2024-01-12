@@ -134,17 +134,17 @@ const config = {
             ],
           },
           {
-            title: 'Community',
-            items: [
-              {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-            ],
+            // title: 'Community',
+            // items: [
+            //   {
+            //     label: 'Stack Overflow',
+            //     href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+            //   },
+            //   {
+            //     label: 'Discord',
+            //     href: 'https://discordapp.com/invite/docusaurus',
+            //   },
+            // ],
           },
           {
             title: 'More',
@@ -160,7 +160,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} hf's Blog, Inc. Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,
